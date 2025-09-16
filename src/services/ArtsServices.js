@@ -6,14 +6,19 @@ import { Artwork } from "@/models/Artwork.js"
 class ArtsServices {
     async getArt() {
         const response = await api.get('api/artworks')
-        const artData = response.data.artworks.map((pojo) => new Artwork(pojo))
-
-
-        AppState.artworks = artData
+        this.handleArtResponse(response)
 
     }
     async changePage(pageNumber) {
         const response = await api.get(`api/artworks?page=${pageNumber}`)
+        this.handleArtResponse(response)
+    }
+
+    handleArtResponse(response) {
+        const artData = response.data.artworks.map((pojo) => new Artwork(pojo))
+        AppState.artworks = artData
+        AppState.currentPage = response.data.page
+        AppState.totalPage = response.data.pages
     }
 
 }

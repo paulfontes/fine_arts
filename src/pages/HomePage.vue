@@ -51,13 +51,13 @@ function changePage(pageNumber) {
         <hr />
       </div>
       <div class="col-3">
-        <button type="button" @click="changePage(1)">Previous Page</button>
+        <button type="button" :disabled="currentPage == 1" @click="changePage(currentPage - 1)">Previous Page</button>
       </div>
       <div class="col-2">
         <p>{{ currentPage }} of {{ totalPages }} pages</p>
       </div>
       <div class="col-3">
-        <button @click="changePage(2)">Next Page</button>
+        <button :disabled="currentPage >= totalPages" @click="changePage(currentPage + 1)">Next Page</button>
       </div>
 
     </section>
