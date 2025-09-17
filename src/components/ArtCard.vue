@@ -13,6 +13,7 @@ defineProps({
     <div class="card">
         <div class="card-img-top">
             <img :src="artProp.imgUrls.regular" alt="" class="img-fluid card-img">
+            <button></button>
         </div>
     </div>
 </template>
